@@ -9,7 +9,7 @@
     </header>
     <main>
         <div class="inner">
-            <h1>Survey Management</h1>
+            <h1>Take Survey</h1>
             <hr/>
             <h3 class="nm-bottom">Pick Survey Templates</h3>
             <p>You can add surveys to any of the 2 templates - <strong>Add Survey Multiple Choice</strong>  or <strong>Add Agree/Disagree Survey</strong>.</p>
@@ -30,20 +30,21 @@
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
+                
                 <% for(var i=0; i < templateData.mcqQuestionData.length; i++) { %>
                     <tr>
                       <td><%= templateData.mcqQuestionData[i].question %></td>
                       <td><%= templateData.mcqQuestionData[i].option1 %>
-                        <input type="radio" id="option1" name="question1">
+                        <input type="radio" id="option1" name="question<%=[i]%>">
                     </td>
                       <td><%= templateData.mcqQuestionData[i].option2 %>
-                        <input type="radio" id="option2" name="question1">
+                        <input type="radio" id="option2" name="question<%=[i]%>">
                     </td>
                       <td><%= templateData.mcqQuestionData[i].option3 %>
-                        <input type="radio" id="option3" name="question1">
+                        <input type="radio" id="option3" name="question<%=[i]%>">
                     </td>
                       <td><%= templateData.mcqQuestionData[i].option4 %>
-                        <input type="radio" id="option4" name="question1">
+                        <input type="radio" id="option4" name="question<%=[i]%>">
                     </td>
                       <td><%= templateData.mcqQuestionData[i].activation %></td>
                       <td><%= templateData.mcqQuestionData[i].expiry %></td>
@@ -70,9 +71,9 @@
                 <% for(var i=0; i < templateData.opinionQuestionData.length; i++) { %>
                     <tr>
                       <td><%= templateData.opinionQuestionData[i].question %></td>
-                      <td><input type="radio" id="option5" name="question2"></i></td>
-                      <td><input type="radio" id="option6" name="question2"></i></td>
-                      <td><input type="radio" id="option7" name="question2"></i></td>
+                      <td><input type="radio" id="option5" name="question1<%=[i]%>"></i></td>
+                      <td><input type="radio" id="option6" name="question1<%=[i]%>"></i></td>
+                      <td><input type="radio" id="option7" name="question1<%=[i]%>"></i></td>
                       <td><%= templateData.opinionQuestionData[i].activation %></td>
                       <td><%= templateData.opinionQuestionData[i].expiry %></td>
                       <td><a href="/question/update/<%= templateData.opinionQuestionData[i].id %>/opinion"><i class="fas fa-edit"></i></a></td>

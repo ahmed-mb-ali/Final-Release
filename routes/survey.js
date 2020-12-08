@@ -16,6 +16,7 @@ var restrict = (req, res, next) => {
 router.get('/', (req, res) => {
     res.render("pages/take_survey",{templateData:{
         pageTitle:"Take Survey",
+        
         isLoggedIn:req.session.isLoggedIn
     }});
 });
