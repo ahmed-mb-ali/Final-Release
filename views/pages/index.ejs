@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+    <header id="header">
+        <%- include('../partials/header'); %>
+    </header>
+    <main>
+        <div class="inner">
+            <h1>Survey Management</h1>
+            <hr/>
+            <h3 class="nm-bottom">Pick Survey Templates</h3>
+            <p>You can add surveys to any of the 2 templates - <strong>Add Survey Multiple Choice</strong>  or <strong>Add Agree/Disagree Survey</strong>.</p>
+            <a href="/question/create/mcq" class="btn-s1">Add Survey Multiple Choice </a> 
+            <a href="/question/create/opinion" class="btn-s1">Add Agree/Disagree Survey</a> 
+            <hr/>
+            <h3 class="nm-bottom">Multiple Choice Template</h3>
+            <p>You may <strong>Edit</strong> or <strong>Delete</strong> questions from the list below.</p>
+            <table class="table-s1">
+                <tr>
+                    <th>Question</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Active From</th>
+                    <th>Expires On</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <% for(var i=0; i < templateData.mcqQuestionData.length; i++) { %>
+                    <tr>
+                      <td><%= templateData.mcqQuestionData[i].question %></td>
+                      <td><%= templateData.mcqQuestionData[i].option1 %>
+                        <input type="radio" id="option1" name="question1">
+                    </td>
+                      <td><%= templateData.mcqQuestionData[i].option2 %>
+                        <input type="radio" id="option2" name="question1">
+                    </td>
+                      <td><%= templateData.mcqQuestionData[i].option3 %>
+                        <input type="radio" id="option3" name="question1">
+                    </td>
+                      <td><%= templateData.mcqQuestionData[i].option4 %>
+                        <input type="radio" id="option4" name="question1">
+                    </td>
+                      <td><%= templateData.mcqQuestionData[i].activation %></td>
+                      <td><%= templateData.mcqQuestionData[i].expiry %></td>
+                      <td><a href="/question/update/<%= templateData.mcqQuestionData[i].id %>/mcq"><i class="fas fa-edit"></i></a></td>
+                      <td><a href="/question/delete/<%= templateData.mcqQuestionData[i].id %>"><i class="fas fa-trash"></i></a></td>
+                    </tr>
+                 <% } %>
+
+
+            </table>
+             <h3 class="nm-bottom">Agree/Disagree Template</h3>
+            <p>You may <strong>Edit</strong> or <strong>Delete</strong> questions from the list below.</p>
+            <table class="table-s1">
+                <tr>
+                    <th>Question</th>
+                    <th>Agree</th>
+                    <th>Neutral</th>
+                    <th>Disagree</th>
+                    <th>Active From</th>
+                    <th>Expires On</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <% for(var i=0; i < templateData.opinionQuestionData.length; i++) { %>
+                    <tr>
+                      <td><%= templateData.opinionQuestionData[i].question %></td>
+                      <td><input type="radio" id="option5" name="question2"></i></td>
+                      <td><input type="radio" id="option6" name="question2"></i></td>
+                      <td><input type="radio" id="option7" name="question2"></i></td>
+                      <td><%= templateData.opinionQuestionData[i].activation %></td>
+                      <td><%= templateData.opinionQuestionData[i].expiry %></td>
+                      <td><a href="/question/update/<%= templateData.opinionQuestionData[i].id %>/opinion"><i class="fas fa-edit"></i></a></td>
+                      <td><a href="/question/delete/<%= templateData.opinionQuestionData[i].id %>"><i class="fas fa-trash"></i></a></td>
+                    </tr>
+                 <% } %>
+            </table>
+        </div>
+    </main>
+    <footer id="footer">
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+</html>
